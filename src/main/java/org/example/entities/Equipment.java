@@ -1,6 +1,6 @@
 package org.example.entities;
 
-abstract class Equipment {
+public abstract class Equipment {
     protected String name;
     protected int frazzle;
 

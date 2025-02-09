@@ -2,7 +2,7 @@ package org.example.entities;
 
 import org.example.enums.Type;
 
-abstract class Planet {
+public abstract class Planet {
     protected String name;
     protected Type type;
 

@@ -3,7 +3,7 @@ package org.example.entities;
 import org.example.enums.Type;
 import java.util.List;
 
-abstract class Person {
+public abstract class Person {
     protected String name;
     protected Integer health;
     protected Type type;
