@@ -3,10 +3,10 @@ name: Build
 on:
   push:
     branches:
-      - develop
+      - main
   pull_request:
     branches:
-      - develop
+      - main
 
 jobs:
   build:
@@ -45,5 +45,5 @@ jobs:
           min-coverage-changed-files: 0
           title: Code Coverage
           update-comment: true
-          pr-number: ${{ github.event.pull_request.number }}
+
 
