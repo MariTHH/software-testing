@@ -35,11 +35,11 @@ jobs:
         run: mvn package
 
       - id: jacoco
-        uses: madrapps/jacoco-report@v1.6.1
+        uses: codecov/codecov-action@v1
         if: ( github.event_name != 'workflow_dispatch' )
         with:
           paths: ${{ github.workspace }}/target/site/jacoco/jacoco.xml
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.CODECOV_TOKEN }}
           min-coverage-overall: 30
           min-coverage-changed-files: 0
           title: Code Coverage
