@@ -21,3 +21,4 @@ class PlanetTests {
         assertEquals(type, planet.getType());
     }
 }
+

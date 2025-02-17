@@ -26,3 +26,4 @@ class ExplorerTests {
         assertEquals("Standard Suit", explorer.getEquipmentList().get(0).getName());
     }
 }
+

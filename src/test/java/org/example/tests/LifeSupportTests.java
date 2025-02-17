@@ -37,3 +37,4 @@ class LifeSupportTests {
         assertEquals(expectedAfterRecharge, lifeSupport.isFunctional());
     }
 }
+
