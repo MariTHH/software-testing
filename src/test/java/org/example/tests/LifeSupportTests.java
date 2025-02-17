@@ -4,7 +4,6 @@ import org.example.support.LifeSupport;
 import org.example.enums.Type;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class LifeSupportTests {
