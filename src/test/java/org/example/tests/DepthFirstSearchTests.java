@@ -6,10 +6,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.*;
 
-public class DepthFirstSearch {
+public class DepthFirstSearchTests {
     private final Map<Integer, List<Integer>> graph;
 
-    public DepthFirstSearch() {
+    public DepthFirstSearchTests() {
         this.graph = new HashMap<>();
     }
 
@@ -38,7 +38,7 @@ public class DepthFirstSearch {
 
     @Test
     public void testSimple() {
-        DepthFirstSearch graph = new DepthFirstSearch();
+        DepthFirstSearchTests graph = new DepthFirstSearchTests();
         graph.addEdge(0, 1);
         graph.addEdge(1, 2);
         graph.addEdge(0, 3);
@@ -52,7 +52,7 @@ public class DepthFirstSearch {
 
     @Test
     void testGraphWithCycle() {
-        DepthFirstSearch graph = new DepthFirstSearch();
+        DepthFirstSearchTests graph = new DepthFirstSearchTests();
         graph.addEdge(0, 1);
         graph.addEdge(1, 2);
         graph.addEdge(2, 3);
@@ -66,7 +66,7 @@ public class DepthFirstSearch {
 
     @Test
     void testDisconnectedGraph() {
-        DepthFirstSearch graph = new DepthFirstSearch();
+        DepthFirstSearchTests graph = new DepthFirstSearchTests();
         graph.addEdge(0, 1);
         graph.addEdge(2, 3);
 
@@ -77,7 +77,7 @@ public class DepthFirstSearch {
 
     @Test
     void testStartFromMiddle() {
-        DepthFirstSearch graph = new DepthFirstSearch();
+        DepthFirstSearchTests graph = new DepthFirstSearchTests();
         graph.addEdge(0, 1);
         graph.addEdge(1, 2);
         graph.addEdge(2, 3);
@@ -89,7 +89,7 @@ public class DepthFirstSearch {
 
     @Test
     void testSelfLoop() {
-        DepthFirstSearch graph = new DepthFirstSearch();
+        DepthFirstSearchTests graph = new DepthFirstSearchTests();
         graph.addEdge(0, 1);
         graph.addEdge(1, 2);
         graph.addEdge(2, 2);

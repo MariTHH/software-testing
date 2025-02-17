@@ -12,7 +12,7 @@ class PlanetTests {
     @ParameterizedTest
     @CsvSource({
             "Magrathea, OXYGEN",
-            "Earth, CO2",
+            "KappaBlagulona, METHAN",
             "Mars, OXYGEN"
     })
     void testPlanetProperties(String name, Type type) {

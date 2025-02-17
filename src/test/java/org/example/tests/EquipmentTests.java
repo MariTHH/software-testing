@@ -10,7 +10,7 @@ class EquipmentTests {
     @ParameterizedTest
     @CsvSource({
             "Standard Suit, 100, OXYGEN",
-            "Heavy Suit, 200, CO2",
+            "Heavy Suit, 200, METHAN",
             "Light Suit, 50, OXYGEN"
     })
     void testSpacesuitFrazzle(String name, int frazzle, Type type) {
@@ -21,7 +21,7 @@ class EquipmentTests {
     @ParameterizedTest
     @CsvSource({
             "Standard Suit, OXYGEN",
-            "Heavy Suit, CO2",
+            "Heavy Suit, METHAN",
             "Light Suit, OXYGEN"
     })
     void testSpacesuitType(String name, Type type) {

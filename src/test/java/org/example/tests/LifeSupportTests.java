@@ -11,7 +11,7 @@ class LifeSupportTests {
     @ParameterizedTest
     @CsvSource({
             "OXYGEN, 100, 50, true",
-            "CO2, 80, 80, false",
+            "METHAN, 80, 80, false",
             "OXYGEN, 120, 30, true"
     })
     void testLifeSupportConsumption(Type type, int initialLevel, int consumption, boolean expectedFunctional) {
@@ -24,7 +24,7 @@ class LifeSupportTests {
     @ParameterizedTest
     @CsvSource({
             "OXYGEN, 100, 100, false, 50, true",
-            "CO2, 80, 80, false, 40, true",
+            "METHAN, 80, 80, false, 40, true",
             "OXYGEN, 120, 120, false, 60, true"
     })
     void testLifeSupportRecharge(Type type, int initialLevel, int consumption, boolean expectedBeforeRecharge,

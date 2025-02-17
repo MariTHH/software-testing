@@ -24,12 +24,12 @@ public class ArctgTests {
 
     @Test
     void TestOne() {
-        assertEquals(Math.PI / 4, arctg(1, 20), 1e-6);
+        assertEquals(Math.PI / 4, arctg(1, 300000), 1e-6);
     }
 
     @Test
     void TestMinusOne() {
-        assertEquals(-Math.PI / 4, arctg(-1, 20), 1e-6);
+        assertEquals(-Math.PI / 4, arctg(-1, 300000), 1e-6);
     }
 
     @Test
@@ -44,12 +44,12 @@ public class ArctgTests {
 
     @Test
     void testNearOne() {
-        assertEquals(Math.atan(0.999), arctg(0.999, 30), 1e-6);
+        assertEquals(Math.atan(0.999), arctg(0.999, 3000), 1e-6);
     }
 
     @Test
     void testNearMinusOne() {
-        assertEquals(Math.atan(-0.999), arctg(-0.999, 30), 1e-6);
+        assertEquals(Math.atan(-0.999), arctg(-0.999, 3000), 1e-6);
     }
 
     @Test

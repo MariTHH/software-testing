@@ -12,7 +12,7 @@ class ExplorerTests {
     @ParameterizedTest
     @CsvSource({
             "Alice, 100, OXYGEN, Magrathea",
-            "Bob, 50, CO2, Earth",
+            "Bob, 50, METHAN, Earth",
             "Eve, 150, OXYGEN, Mars"
     })
     void testExplorerEquipment(String name, int health, Type type, String planetName) {
