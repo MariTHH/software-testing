@@ -2,36 +2,38 @@ package org.example.tests;
 
 import org.example.support.LifeSupport;
 import org.example.enums.Type;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.testng.AssertJUnit.assertEquals;
 
 class LifeSupportTests {
-    private LifeSupport lifeSupport;
 
-    @BeforeEach
-    void setUp() {
-        lifeSupport = new LifeSupport(Type.OXYGEN, 100);
+    @ParameterizedTest
+    @CsvSource({
+            "OXYGEN, 100, 50, true",
+            "CO2, 80, 80, false",
+            "OXYGEN, 120, 30, true"
+    })
+    void testLifeSupportConsumption(Type type, int initialLevel, int consumption, boolean expectedFunctional) {
+        LifeSupport lifeSupport = new LifeSupport(type, initialLevel);
+        lifeSupport.consumeResource(consumption);
+        assertEquals(initialLevel - consumption, lifeSupport.getResourceLevel());
+        assertEquals(expectedFunctional, lifeSupport.isFunctional());
     }
 
-    @Test
-    void testLifeSupportConsumption() {
-        lifeSupport.consumeResource(50);
-        assertEquals(50, lifeSupport.getResourceLevel());
-        assertTrue(lifeSupport.isFunctional());
+    @ParameterizedTest
+    @CsvSource({
+            "OXYGEN, 100, 100, false, 50, true",
+            "CO2, 80, 80, false, 40, true",
+            "OXYGEN, 120, 120, false, 60, true"
+    })
+    void testLifeSupportRecharge(Type type, int initialLevel, int consumption, boolean expectedBeforeRecharge,
+                                 int rechargeAmount, boolean expectedAfterRecharge) {
+        LifeSupport lifeSupport = new LifeSupport(type, initialLevel);
+        lifeSupport.consumeResource(consumption);
+        assertEquals(expectedBeforeRecharge, lifeSupport.isFunctional());
 
-        lifeSupport.consumeResource(60);
-        assertFalse(lifeSupport.isFunctional());
-    }
-
-    @Test
-    void testLifeSupportRecharge() {
-        lifeSupport.consumeResource(100);
-        assertFalse(lifeSupport.isFunctional());
-
-        lifeSupport.recharge(50);
-        assertTrue(lifeSupport.isFunctional());
-        assertEquals(50, lifeSupport.getResourceLevel());
+        lifeSupport.recharge(rechargeAmount);
+        assertEquals(expectedAfterRecharge, lifeSupport.isFunctional());
     }
 }

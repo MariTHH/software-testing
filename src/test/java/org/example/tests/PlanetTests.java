@@ -3,21 +3,21 @@ package org.example.tests;
 import org.example.entities.Magrathea;
 import org.example.entities.Planet;
 import org.example.enums.Type;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import static org.junit.jupiter.api.Assertions.*;
 
 class PlanetTests {
-    private Planet planet;
 
-    @BeforeEach
-    void setUp() {
-        planet = new Magrathea("Magrathea", Type.OXYGEN);
-    }
-
-    @Test
-    void testPlanetProperties() {
-        assertEquals("Magrathea", planet.getName());
-        assertEquals(Type.OXYGEN, planet.getType());
+    @ParameterizedTest
+    @CsvSource({
+            "Magrathea, OXYGEN",
+            "Earth, CO2",
+            "Mars, OXYGEN"
+    })
+    void testPlanetProperties(String name, Type type) {
+        Planet planet = new Magrathea(name, type);
+        assertEquals(name, planet.getName());
+        assertEquals(type, planet.getType());
     }
 }

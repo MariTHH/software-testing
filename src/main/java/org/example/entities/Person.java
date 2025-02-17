@@ -1,6 +1,7 @@
 package org.example.entities;
 
 import org.example.enums.Type;
+
 import java.util.List;
 
 public abstract class Person {
@@ -20,6 +21,14 @@ public abstract class Person {
         this.equipmentList = equipmentList;
 
         validateSurvival();
+    }
+
+    public static Person createPerson(String type, String name, Integer health, Type raceType, Planet planet, boolean isAlive, List<Equipment> equipment) {
+        return switch (type.toLowerCase()) {
+            case "explorer" -> new Explorer(name, health, raceType, planet, isAlive, equipment);
+            case "policeman" -> new Policemen(name, health, raceType, planet, isAlive, equipment, false, 100);
+            default -> throw new IllegalArgumentException("Unknown person type: " + type);
+        };
     }
 
     private void validateSurvival() {
@@ -67,6 +76,7 @@ public abstract class Person {
     public List<Equipment> getEquipmentList() {
         return equipmentList;
     }
+
     public void addEquipment(Equipment equipment) {
         equipmentList.add(equipment);
     }
@@ -75,4 +85,5 @@ public abstract class Person {
         this.health = health;
         isAlive = health > 0;
     }
+
 }
