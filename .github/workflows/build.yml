@@ -43,3 +43,5 @@ jobs:
           title: Code Coverage
           update-comment: true
 
+          display-changed-files: true
+
