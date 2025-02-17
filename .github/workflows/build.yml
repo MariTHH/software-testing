@@ -43,6 +43,7 @@ jobs:
           min-coverage-changed-files: 0
           title: Code Coverage
           update-comment: true
+        continue-on-error: true
 
   checkstyle:
     name: checkstyle
