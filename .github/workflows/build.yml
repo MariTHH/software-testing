@@ -22,13 +22,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up JDK 21  # ✅ Устанавливаем Java 21
+      - name: Set up JDK 21
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
           java-version: '21'
 
-      - name: Check Java version  # ✅ Проверяем, какая версия установлена
+      - name: Check Java version
         run: java -version
 
       - name: Build with Maven
