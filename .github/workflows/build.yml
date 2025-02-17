@@ -3,11 +3,10 @@ name: Build
 on:
   push:
     branches:
-      - main
+      - develop
   pull_request:
     branches:
-      - main
-
+      - develop
 
 jobs:
   build:
@@ -34,13 +33,17 @@ jobs:
       - name: Build with Maven
         run: mvn package
 
+      - name: Generate JaCoCo Report
+        run: mvn jacoco:report
+
       - id: jacoco
         uses: madrapps/jacoco-report@v1.6.1
         with:
           paths: ${{ github.workspace }}/target/site/jacoco/jacoco.xml
-          token: ${{ secrets.PERSON }}
+          token: ${{ secrets.GH_PAT }}
           min-coverage-overall: 30
           min-coverage-changed-files: 0
           title: Code Coverage
           update-comment: true
+          pr-number: ${{ github.event.pull_request.number }}
 
