@@ -29,4 +29,3 @@ class PolicemenTests {
         assertFalse(policemen.isHoldingWeapon());
     }
 }
-

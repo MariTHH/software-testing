@@ -99,4 +99,3 @@ public class DepthFirstSearchTests {
         assertEquals(expected, result);
     }
 }
-

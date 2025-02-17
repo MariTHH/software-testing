@@ -17,7 +17,6 @@ public class ArctgTests {
         return result;
     }
 
-
     @Test
     void TestZero() {
         assertEquals(0.0, arctg(0, 10), 1e-6);
