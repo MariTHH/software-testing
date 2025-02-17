@@ -1,6 +1,7 @@
 package org.example.entities;
 
 import org.example.enums.Type;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
