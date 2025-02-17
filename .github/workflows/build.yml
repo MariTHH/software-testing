@@ -45,5 +45,13 @@ jobs:
           title: Code Coverage
           update-comment: true
 
+  checkstyle:
+    name: checkstyle
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      pull-requests: write
+
 
 
