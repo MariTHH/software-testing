@@ -1,8 +1,13 @@
 name: Build
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - main
   pull_request:
+    branches:
+      - main
+
 
 jobs:
   build:
@@ -39,5 +44,3 @@ jobs:
           min-coverage-changed-files: 0
           title: Code Coverage
           update-comment: true
-
-
