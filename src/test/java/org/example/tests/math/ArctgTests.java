@@ -1,20 +1,14 @@
-package org.example.tests;
+package org.example.tests.math;
 
+import org.example.tests.extensions.TestPrivateMethod;
 import org.junit.jupiter.api.Test;
+
+import java.lang.reflect.Method;
+
+import static org.example.math.Arctg.arctg;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ArctgTests {
-    public static double arctg(double x, int terms) {
-        if (Math.abs(x) > 1) {
-            throw new IllegalArgumentException("only valid for |x| ≤ 1");
-        }
-        double result = 0.0;
-        for (int n = 0; n < terms; n++) {
-            double term = Math.pow(-1, n) * Math.pow(x, 2 * n + 1) / (2 * n + 1);
-            result += term;
-        }
-        return result;
-    }
 
     @Test
     void TestZero() {
@@ -54,5 +48,22 @@ public class ArctgTests {
     @Test
     void testDivergenceOutsideRadius() {
         assertThrows(IllegalArgumentException.class, () -> arctg(1.1, 10));
+    }
+
+    @Test
+    @TestPrivateMethod(
+            className = "org.example.math.Arctg",
+            methodName = "calculateTerm",
+            paramTypes = {double.class, int.class}
+    )
+    void testCalculateTerm() throws Exception {
+        Class<?> clazz = Class.forName("org.example.math.Arctg");
+        Method method = clazz.getDeclaredMethod("calculateTerm", double.class, int.class);
+        method.setAccessible(true);
+
+        double result = (double) method.invoke(null, 0.5, 2);
+        double expected = Math.pow(-1, 2) * Math.pow(0.5, 5) / 5;
+
+        assertEquals(expected, result, 1e-6);
     }
 }
