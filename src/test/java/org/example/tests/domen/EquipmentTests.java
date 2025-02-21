@@ -49,7 +49,7 @@ class EquipmentTests {
         Exception exception = assertThrows(IllegalStateException.class, () ->
                 Equipment.createEquipment("spacesuit", "Old Suit", 120, Type.OXYGEN, null)
         );
-        assertEquals("Cannot create spacesuit - item is too damaged and removed.", exception.getMessage());
+        assertEquals("Equipment is too damaged to be used.", exception.getMessage());
     }
 
     @Test

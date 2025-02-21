@@ -7,6 +7,9 @@ public abstract class Equipment {
     protected int frazzle;
 
     public Equipment(String name, int frazzle) {
+        if (frazzle > 100) {
+            throw new IllegalStateException("Equipment is too damaged to be used.");
+        }
         this.name = name;
         this.frazzle = frazzle;
     }
