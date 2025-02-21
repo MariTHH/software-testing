@@ -50,6 +50,34 @@ public class ArctgTests {
         assertThrows(IllegalArgumentException.class, () -> arctg(1.1, 10));
     }
 
+
+
+    @Test
+    void testMaxDouble() {
+        assertThrows(IllegalArgumentException.class, () -> arctg(Double.MAX_VALUE, 10));
+    }
+
+    @Test
+    void testMinDouble() {
+        assertEquals(Math.atan(Double.MIN_VALUE), arctg(Double.MIN_VALUE, 10), 1e-6);
+    }
+
+    @Test
+    void testPositiveInfinity() {
+        assertThrows(IllegalArgumentException.class, () -> arctg(Double.POSITIVE_INFINITY, 10));
+    }
+
+    @Test
+    void testNegativeInfinity() {
+        assertThrows(IllegalArgumentException.class, () -> arctg(Double.NEGATIVE_INFINITY, 10));
+    }
+
+    @Test
+    void testNaN() {
+        assertTrue(Double.isNaN(arctg(Double.NaN, 10)));
+    }
+
+
     @Test
     @TestPrivateMethod(
             className = "org.example.math.Arctg",

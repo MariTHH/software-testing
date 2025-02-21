@@ -75,6 +75,13 @@ public class DepthFirstSearchTests {
         List<Integer> expected = List.of(0, 1, 2);
         assertEquals(expected, result);
     }
+    @Test
+    void testEmptyGraph() {
+        DepthFirstSearch graph = new DepthFirstSearch();
+        List<Integer> result = graph.dfs(0);
+        assertTrue(result.isEmpty());
+    }
+
 
     @Test
     @TestPrivateMethod(

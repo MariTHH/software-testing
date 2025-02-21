@@ -15,6 +15,11 @@ public abstract class Person implements LifeSupportObserver {
     protected boolean isAlive;
     protected List<Equipment> equipmentList;
     public LifeSupport lifeSupport;
+    private static final int MAX_FRAZZLE = 100;
+    private static final int LIFE_SUPPORT_CONSUMPTION_MAX = 20;
+    private static final int LIFE_SUPPORT_FULL_CHARGE = 100;
+    private static final int MIN_HEALTH_TO_SURVIVE = 1;
+
 
     public Person(String name, Integer health, Type type, Planet planet, boolean isAlive, List<Equipment> equipmentList, int lifeSupportCapacity) {
         this.name = name;
@@ -42,7 +47,7 @@ public abstract class Person implements LifeSupportObserver {
         if (this.planet.getType() != this.type || this.lifeSupport.getResourceLevel() < 0) {
             if (!hasValidSpacesuit()) {
                 Random random = new Random();
-                int consumption = random.nextInt(20);
+                int consumption = random.nextInt(LIFE_SUPPORT_CONSUMPTION_MAX);
                 consumeLifeSupport(consumption);
             }
         }
@@ -62,7 +67,7 @@ public abstract class Person implements LifeSupportObserver {
 
     private void removeBrokenEquipment() {
         if (this.equipmentList != null) {
-            equipmentList.removeIf(equipment -> equipment.getFrazzle() > 100);
+            equipmentList.removeIf(equipment -> equipment.getFrazzle() > MAX_FRAZZLE);
         }
     }
 
@@ -101,8 +106,8 @@ public abstract class Person implements LifeSupportObserver {
     }
 
     void rechargeLifeSupport() {
-        lifeSupport.recharge(100);
-        if (lifeSupport.getResourceLevel() >= 0 && this.health >= 1) {
+        lifeSupport.recharge(LIFE_SUPPORT_FULL_CHARGE);
+        if (lifeSupport.getResourceLevel() >= 0 && this.health >= MIN_HEALTH_TO_SURVIVE) {
             isAlive = true;
         } else {
             isAlive = false;

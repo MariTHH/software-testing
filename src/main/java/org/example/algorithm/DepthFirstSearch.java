@@ -16,6 +16,7 @@ public class DepthFirstSearch {
     public List<Integer> dfs(int start) {
         List<Integer> nodes = new ArrayList<>();
         Set<Integer> visited = new HashSet<>();
+        if (!graph.containsKey(start)) return nodes;
         dfsTraversal(start, nodes, visited);
         return nodes;
     }
@@ -30,5 +31,6 @@ public class DepthFirstSearch {
         for (int neighbor : graph.getOrDefault(node, new ArrayList<>())) {
             dfsTraversal(neighbor, nodes, visited);
         }
+
     }
 }

@@ -2,7 +2,6 @@ package org.example.tests.domen;
 
 import org.example.domen.entities.*;
 import org.example.domen.enums.Type;
-import org.example.domen.support.LifeSupport;
 import org.example.tests.extensions.PrivateMethodTestsExtension;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -20,7 +19,6 @@ import static org.junit.jupiter.api.Assertions.*;
 class ExplorerTests {
     private Explorer explorer;
     private Planet planet;
-    private LifeSupport lifeSupport;
     private List<Equipment> equipmentList;
     private Person alivePerson;
     private Person deadPerson;
